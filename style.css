@@ -1,0 +1,146 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: radial-gradient(circle at top, #292929, #050505 65%);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.calculator {
+    width: 100%;
+    max-width: 360px;
+    padding: 22px;
+    background: #090909;
+    border: 1px solid #292929;
+    border-radius: 32px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    animation: fadeUp 0.7s ease;
+}
+
+.display {
+    min-height: 145px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px 4px 24px;
+    overflow: hidden;
+}
+
+#expression {
+    min-height: 24px;
+    color: #888;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+#result {
+    width: 100%;
+    text-align: right;
+    font-size: clamp(40px, 12vw, 58px);
+    font-weight: 300;
+    overflow-wrap: anywhere;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+button {
+    aspect-ratio: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 50%;
+    background: #303030;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    transition: transform 0.15s ease,
+                background-color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+    background: #505050;
+}
+
+button:active {
+    transform: scale(0.90);
+}
+
+button.function {
+    background: #c5c5c7;
+    color: #111;
+}
+
+button.function:hover {
+    background: #e0e0e2;
+}
+
+button.operator {
+    background: #ff9500;
+    color: white;
+    font-size: 29px;
+}
+
+button.operator:hover {
+    background: #ffb340;
+}
+
+button.zero {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    border-radius: 50px;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive untuk HP */
+@media screen and (max-width: 400px) {
+    .calculator {
+        padding: 16px;
+        border-radius: 26px;
+    }
+
+    .buttons {
+        gap: 8px;
+    }
+
+    button {
+        font-size: 22px;
+    }
+
+    .display {
+        min-height: 125px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
